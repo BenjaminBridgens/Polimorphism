@@ -51,7 +51,7 @@ namespace S3.Polymorphism
         /// <param name="error">The error message for the user, if an error occurred.</param>
         /// <exception cref="System.ArgumentException">Thrown when the password parameter is null, empty or whitespace.</exception>
         /// <returns>wether or not the validation was successfull.</returns>
-        public static bool IsValidPassword(string password, out string error)
+        public static bool IsPasswordValid(string password, out string error)
         {
             bool correctlyFormatted = false;
             if (String.IsNullOrWhiteSpace(password))
@@ -115,7 +115,7 @@ namespace S3.Polymorphism
                 // Attempt to validate the 'value' argument:
                 try
                 {
-                    validationSuccess = IsValidPassword(value, out error);
+                    validationSuccess = IsPasswordValid(value, out error);
                 }
                 catch (Exception)
                 {

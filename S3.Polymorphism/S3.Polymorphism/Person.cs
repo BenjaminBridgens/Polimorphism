@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace S3.Polymorphism
 {
     /// <summary>
-    /// Represents a user.
+    /// Represents a Person.
     /// </summary>
     public class Person : User
     {
@@ -55,7 +55,28 @@ namespace S3.Polymorphism
 
 
         #region Methods
-        //coming soon ;)
+        /// <summary>
+        /// Validates the format of the ssn.
+        /// </summary>
+        /// <param name="ssn">The ssn to be validated.</param>
+        /// <param name="error">The error message for the user, if an error occurred.</param>
+        /// <exception cref="System.ArgumentException">Thrown when the ssn parameter is null, empty or whitespace.</exception>
+        /// <returns>wether or not the validation was successfull.</returns>
+        public static bool IsSsnValid(string ssn, out string error)
+        {
+            bool correctlyFormatted = false;
+            if (String.IsNullOrWhiteSpace(ssn))
+            {
+                error = "Something went wrong";
+                throw new ArgumentException();
+            }
+            else
+            {
+                error = String.Empty;
+                correctlyFormatted = true;
+            }
+            return correctlyFormatted;
+        }
         #endregion
 
 
