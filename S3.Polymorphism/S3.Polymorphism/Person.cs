@@ -6,24 +6,63 @@ using System.Threading.Tasks;
 
 namespace S3.Polymorphism
 {
-    public class Person
+    /// <summary>
+    /// Represents a user.
+    /// </summary>
+    public class Person : User
     {
+        #region Fields
+        /// <summary>
+        /// The firstname of the person.
+        /// </summary>
         protected string firstname;
+
+        /// <summary>
+        /// The lastname of the person.
+        /// </summary>
         protected string lastname;
 
+        /// <summary>
+        /// The social sercurity number of the person.
+        /// </summary>
+        protected string ssn;
+        #endregion
 
-        public Person()
+
+        #region Constructors
+        /// <summary>
+        /// Creates a new instance of this class.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password. Must be at least 8 characters long and  at most 16, and contain 4-6 letters.</param>
+        /// <param name="firstname">The firstname.</param>
+        /// <param name="lastname">The lastname.</param>
+        /// <param name="ssn">The social security number.</param>
+        public Person(string username, string password, string firstname, string lastname, string ssn)
         {
-
+            try
+            {
+                Username = username;
+                Password = password;
+                Firstname = firstname;
+                Password = password;
+                Ssn = ssn;
+            }
+            catch (ArgumentOutOfRangeException) { throw; }
+            catch (ArithmeticException) { throw; }
         }
+        #endregion
 
 
+        #region Methods
+        //coming soon ;)
+        #endregion
 
 
-
-
-
-
+        #region Properties        
+        /// <summary>
+        /// Gets or sets the firstname.
+        /// </summary>
         public string Firstname
         {
             get
@@ -33,10 +72,17 @@ namespace S3.Polymorphism
 
             set
             {
+                if (String.IsNullOrWhiteSpace(firstname))
+                {
+                    throw new ArgumentException();
+                }
                 firstname = value;
             }
         }
 
+        /// <summary>
+        /// Gets or sets the lastname.
+        /// </summary>
         public string Lastname
         {
             get
@@ -49,5 +95,21 @@ namespace S3.Polymorphism
                 lastname = value;
             }
         }
+
+        /// <summary>
+        /// Gets or sets the social security number.
+        /// </summary>
+        public string Ssn
+        {
+            get
+            {
+                return ssn;
+            }
+            set
+            {
+                ssn = value;
+            }
+        }
+        #endregion
     }
 }

@@ -29,9 +29,7 @@ namespace S3.Polymorphism
         /// Creates a new instance of this class. Use this class to enable a user to login, then downcast the object to the appropriate derived type.
         /// </summary>
         /// <param name="username">The username.</param>
-        /// <param name="password">The password. Must be at least 8 characters long and  at most 16, and contain 4-6 letters.</param>
-
-
+        /// <param name="password">The password. Must be at least 8 characters long and  at most 16, and contain 4-6 letters.</param>        
         public User(string username, string password)
         {
             try
